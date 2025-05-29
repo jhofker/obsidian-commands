@@ -1,0 +1,9 @@
+{
+    "id": "slash-commands",
+    "name": "Slash Commands",
+    "version": "1.0.0",
+    "minAppVersion": "1.7.0",
+    "description": "A small suite of useful slash commands.",
+    "author": "Jordan Hofker",
+    "isDesktopOnly": false
+}
