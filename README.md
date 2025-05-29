@@ -9,11 +9,17 @@ A module-based Obsidian plugin that provides helpful slash commands for quick te
 - **Usage**: Type `/today` in any note and it will be automatically replaced with today's date
 - **Configurable**: Date format can be customized in settings
 
+### `/now` Command
+- **Function**: Inserts the current time at the cursor position
+- **Usage**: Type `/now` in any note and it will be automatically replaced with the current time
+- **Configurable**: Time format can be customized in settings (defaults to 24-hour format)
+
 ## Available Commands
 
 | Command | Description | Example Output |
 |---------|-------------|----------------|
 | `/today` | Insert current date | `2024-01-15` (default format) |
+| `/now` | Insert current time | `23:11` (default format) |
 
 ## Settings
 
@@ -22,7 +28,11 @@ Access the plugin settings through Obsidian's Settings > Community Plugins > Sla
 ### Configuration Options
 
 - **Enable /today command**: Toggle to enable/disable the `/today` slash command
-- **Today date format**: Customize the date format using moment.js format patterns:
+- **Today date format**: Customize the date format using moment.js format patterns
+- **Enable /now command**: Toggle to enable/disable the `/now` slash command  
+- **Now time format**: Customize the time format using moment.js format patterns (default: HH:mm)
+
+#### Format Patterns:
   - `YYYY` - 4-digit year (2024)
   - `MM` - 2-digit month (01-12)
   - `DD` - 2-digit day (01-31)
@@ -41,8 +51,15 @@ Access the plugin settings through Obsidian's Settings > Community Plugins > Sla
 - `MMMM Do, YYYY` → January 15th, 2024
 - `dddd, MMMM Do` → Monday, January 15th
 - `YYYY-MM-DD HH:mm` → 2024-01-15 14:30
-- `h:mm A` → 2:30 PM
 - `[Today is] dddd` → Today is Monday
+
+### Common Time Formats
+
+- `HH:mm` → 23:11 (24-hour format, default for /now)
+- `h:mm A` → 11:11 PM (12-hour format with AM/PM)
+- `HH:mm:ss` → 23:11:45 (24-hour with seconds)
+- `h:mm:ss A` → 11:11:45 PM (12-hour with seconds)
+- `[Time: ]HH:mm` → Time: 23:11 (custom text + time)
 
 For more format options, see the [moment.js documentation](https://momentjs.com/docs/#/displaying/format/).
 

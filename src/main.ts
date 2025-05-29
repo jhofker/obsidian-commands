@@ -24,11 +24,23 @@ export default class ObsidianCommandsPlugin extends Plugin {
     // Register command for /today
     this.addCommand({
       id: "insert-today-date",
-      name: "Insert today's date",
+      name: "/today: Insert today's date",
       editorCallback: (editor: any) => {
         if (settings.enabledCommands.today) {
           const today = formatDate(new Date(), settings.todayFormat);
           editor.replaceSelection(today);
+        }
+      },
+    });
+
+    // Register command for /now
+    this.addCommand({
+      id: "insert-current-time",
+      name: "/now: Insert current time",
+      editorCallback: (editor: any) => {
+        if (settings.enabledCommands.now) {
+          const now = formatDate(new Date(), settings.nowFormat);
+          editor.replaceSelection(now);
         }
       },
     });
@@ -75,6 +87,15 @@ function handleSlashCommand(event: Event) {
         const endPos = cursor;
 
         editor.replaceRange(today, startPos, endPos);
+      }
+
+      // Check for /now command
+      if (settings.enabledCommands.now && beforeCursor.endsWith("/now")) {
+        const now = formatDate(new Date(), settings.nowFormat);
+        const startPos = { line: cursor.line, ch: cursor.ch - 4 }; // '/now' length
+        const endPos = cursor;
+
+        editor.replaceRange(now, startPos, endPos);
       }
     }, 0);
   } catch (error) {
